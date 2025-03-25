@@ -120,15 +120,19 @@ public:
 	bool isLegal(Move m) {
 
 		//Checken ob row oder col out of Range ist
-		if (m.row < 0 || m.row > 3 || m.col < 0 || m.col > 3) {
+		/*if (m.row < 0 || m.row > 3 || m.col < 0 || m.col > 3) {
 			return false;
+		}*/
+		
+		if (m.row > 0 && m.row < 3 && m.col > 0 && m.col < 3) {
+			//Checken ob der Platz, an dem das Symbol hingesetzt werden soll, frei ist
+			if (grid[m.row - 1][m.col - 1] != ' ') {
+				return false;
+			}
+			return true;
 		}
 
-		//Checken ob der Platz, an dem das Symbol hingesetzt werden soll, frei ist
-		if (grid[m.row - 1][m.col - 1] != ' ') {
-			return false;
-		}
-		return true;
+		return false;
 	}
 
 	//Methode nimmt einen Zug als Input an und setzt ihn auf das Board, falls er valide ist.

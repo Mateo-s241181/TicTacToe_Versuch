@@ -38,9 +38,26 @@ public:
 		int x{};
 		int y{};
 
+
+
 		std::cin >> x >> y;
 
 		Move result = Move();
+
+		//Cin.fail gibt true zurück, wenn das letzte Input nicht in den Variablen gespeichert werden konnte. Es entsteht ein Errorbit, den die Funktion prüft.
+		if (std::cin.fail()) {
+
+			std::cout << "\n\nInput failed, try again \n\n";
+
+			//löscht Errorbits, nicht den Inhalt des Buffers
+			std::cin.clear();
+			//Ignoriert die alles im Buffer, bis ein '\n' vorkommt
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			//Invalider Move wird returned => Neue Abfrage in main()
+			return result;
+		}
+
 
 		result.row = x;
 		result.col = y;
