@@ -52,6 +52,7 @@ public:
 			//löscht Errorbits, nicht den Inhalt des Buffers
 			std::cin.clear();
 			//Ignoriert die alles im Buffer, bis ein '\n' vorkommt
+			//std::cin.ignore(Wie viele Zeichen soll ich ignorieren? (maximale Anzahl), Bei Welchem Zeichen soll ich abbrechen? (\n))
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 			//Invalider Move wird returned => Neue Abfrage in main()
