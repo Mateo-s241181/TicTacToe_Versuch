@@ -25,6 +25,8 @@ public:
 
 	void PrintBoard() {
 
+		std::cout << "----------------- Spielfeld -----------------" << std::endl << std::endl;
+
 		std::cout << "	 (1) (2) (3) " << std::endl;
 
 		for (int j = 0; j < 3; j++) {
@@ -44,6 +46,8 @@ public:
 
 		std::cout << "        +---+---+---+\n";												//Letzte Zeile
 
+
+		std::cout << "\n---------------------------------------------\n\n\n\n\n\n\n\n\n\n\n";
 		/*
 		Board soll so aussehen:
 
@@ -124,7 +128,7 @@ public:
 			return false;
 		}*/
 		
-		if (m.row > 0 && m.row < 3 && m.col > 0 && m.col < 3) {
+		if (m.row > 0 && m.row <= 3 && m.col > 0 && m.col <= 3) {
 			//Checken ob der Platz, an dem das Symbol hingesetzt werden soll, frei ist
 			if (grid[m.row - 1][m.col - 1] != ' ') {
 				return false;

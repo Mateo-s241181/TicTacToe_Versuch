@@ -65,8 +65,13 @@ public:
 		return "";
 	}
 
-	//TODO: Funktionen CheckWinner testen!!!
-	//Danach Spielablauf in TicTacToe.cpp implementieren
+	void PrintGame() {
+		std::cout << "-------------------------------------" << std::endl;
+		std::cout << "Spieler 1: " << Players[0].getName() << "   (" << Players[0].symbol << ")" << "       Score: " << Players[0].getScore() << std::endl << std::endl;
+		std::cout << "Spieler 2: " << Players[1].getName() << "   (" << Players[1].symbol << ")" << "       Score: " << Players[1].getScore() << std::endl;
+		std::cout << "-------------------------------------" << std::endl << std::endl;
+		b.PrintBoard();
+	}
 
 };
 

@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Game.h"
 #include "Move.h"
+#include <cstdlib> //Für system("cls")
 
 int main()
 {
@@ -17,24 +18,17 @@ int main()
     g.Players[0].symbol = 'X';
     g.Players[1].symbol = 'O';
 
-    //User Namen auf die Konsole ausgeben
-    std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-    std::cout << "-------------------------------------" << std::endl;
-    std::cout << "Spieler 1: " << g.Players[0].getName() << "   (" << g.Players[0].symbol << ")" << std::endl << std::endl;
-    std::cout << "Spieler 2: " << g.Players[1].getName() << "   (" << g.Players[1].symbol << ")" << std::endl;
-    std::cout << "-------------------------------------" << std::endl << std::endl;
+    //Konsole clearen
+    system("cls");
+
+    //PlayerInfo und Spielfeld ausgeben
+    g.PrintGame();
 
     //Zusatz: (Abfragen, bis wie viel die Spieler spielen wollen)
 
-    //Spiel ist Initialisiert
-
-    //Ablauf eines Zuges in eine while-Schleife schreiben
-
+    //Variable initialisieren, die überwacht ob ein Gewinner gefunden worden ist.
     bool winnerFound = false;
 
-    std::cout << "----------------- Spielfeld -----------------" << std::endl << std::endl;
-    g.b.PrintBoard();
-    std::cout << "\n---------------------------------------------\n\n\n\n\n\n\n\n\n\n" << std::endl;
 
     //counter zum überwachen wer gerade dran ist
     int counter = 0;
@@ -42,8 +36,11 @@ int main()
     //Solange kein Gewinner gefunden worden ist soll folgende Schleife wiederholt werden
     while (!winnerFound) {
 
-
+        //Spieler nach Move fragen und in "move" speichern
         Move move = g.Players[counter % 2].getMove();
+
+        //Konsole clearen
+        system("cls");
 
         //Wenn der Move nicht legal ist, soll das Einlesen wiederholt werden
         if (!g.b.isLegal(move)) {
@@ -58,20 +55,15 @@ int main()
 
         counter++;
 
-        std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-        std::cout << "-------------------------------------" << std::endl;
-        std::cout << "Spieler 1: " << g.Players[0].getName() << "   (" << g.Players[0].symbol << ")" << std::endl << std::endl;
-        std::cout << "Spieler 2: " << g.Players[1].getName() << "   (" << g.Players[1].symbol << ")" << std::endl;
-        std::cout << "-------------------------------------" << std::endl << std::endl;
-        std::cout << "----------------- Spielfeld -----------------" << std::endl << std::endl;
-        g.b.PrintBoard();
-        std::cout << "\n---------------------------------------------\n\n\n" << std::endl;
-        std::cout << "\n\n\n\n\n\n\n";
+        g.PrintGame();
 
         //prüfen ob der Spieler gewonnen hat
         if (g.checkWinner() != "") {
 
-            std::cout << "\n\n\n\n\n\n\n" << "$$$ " << g.checkWinner() << ", du hast gewonnen $$$" << "\n\n\n\n\n\n\n\n";
+            //Konsole clearen
+            system("cls");
+
+            std::cout << "\n\n\n" << "$$$ " << g.checkWinner() << ", du hast gewonnen $$$" << "\n\n\n\n";
 
             //Spieler suchen, der gewonnen hat uns deinen Score inkrementieren
 
